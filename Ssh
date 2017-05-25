@@ -1,0 +1,18 @@
+FROM debian:7
+MAINTAINER Me <andreas.krey@aquilus.com>
+
+RUN apt-get update &&  apt-get install -y ssh tor net-tools
+
+COPY sshd_config /etc/ssh/
+
+RUN adduser --disabled-password --gecos nix andrkrey && mkdir /home/andrkrey/.ssh
+COPY auth /home/andrkrey/.ssh/authorized_keys
+RUN chown -R andrkrey /home/andrkrey/.ssh
+
+RUN mkdir -p /app
+COPY s.sh /app/
+RUN chmod 755 /app/s.sh
+
+EXPOSE 22
+
+CMD ["/app/s.sh"]

@@ -1,0 +1,32 @@
+############################
+#
+# Build:
+#    docker-compose build
+#
+# Run:
+#    docker-compose up
+# and later
+#    docker-compose down
+# elsewhere.
+
+version: "2"
+
+services:
+  tor:
+    build:
+      context: .
+      dockerfile: Tor
+    image: torak
+    volumes:
+      - data:/data
+
+  ssh:
+    build:
+      context: .
+      dockerfile: Ssh
+    image: sshak
+    volumes:
+      - data:/data
+
+volumes:
+  data:
