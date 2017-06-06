@@ -1,12 +1,18 @@
-# FROM debian:7
+FROM gcc
+MAINTAINER Me <andreas.krey@aquilus.com>
+
+RUN mkdir /tmpdir
+ADD https://raw.githubusercontent.com/apk/c-utils/master/aenv.c /tmpdir/
+RUN gcc -o /tmpdir/aenv /tmpdir/aenv.c
+
 FROM alpine
 MAINTAINER Me <andreas.krey@aquilus.com>
 
-# RUN apt-get update &&  apt-get install -y tor net-tools
-RUN apk update && apk add tor
-
 RUN mkdir -p /app
+COPY --from=0 /tmp/aenv /app/aenv
 COPY t.sh torrc /app/
 RUN chmod 755 /app/t.sh
+
+RUN apk update && apk add tor
 
 CMD ["/app/t.sh"]
