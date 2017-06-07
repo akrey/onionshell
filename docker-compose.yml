@@ -13,18 +13,18 @@ version: "2"
 
 services:
   tor:
-    build:
-      context: .
-      dockerfile: Tor
-    image: torak
+    #build:
+    #  context: .
+    #  dockerfile: Tor
+    image: akrey/onion
     volumes:
       - data:/data
 
   ssh:
-    build:
-      context: .
-      dockerfile: Ssh
-    image: sshak
+    #build:
+    #  context: .
+    #  dockerfile: Ssh
+    image: akrey/shell
     volumes:
       - data:/data
 
