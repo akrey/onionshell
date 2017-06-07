@@ -6,7 +6,7 @@ MAINTAINER Me <andreas.krey@aquilus.com>
 # RUN apt-get update &&  apt-get install -y ssh net-tools
 RUN apk update && apk add openssh
 
-COPY sshd_config /etc/ssh/sshd_config_0
+COPY sshd_config /etc/ssh/sshd_config
 
 RUN adduser -g nix -D andrkrey && mkdir /home/andrkrey/.ssh
 COPY auth /home/andrkrey/.ssh/authorized_keys
