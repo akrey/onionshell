@@ -8,9 +8,9 @@ RUN apk update && apk add openssh
 
 COPY sshd_config /etc/ssh/sshd_config
 
-RUN adduser -g nix -D andrkrey -s /bin/sh && mkdir /home/andrkrey/.ssh
-COPY auth /home/andrkrey/.ssh/authorized_keys
-RUN chown -R andrkrey /home/andrkrey/.ssh
+RUN adduser -g nix -D andrkrey -s /bin/sh -h /ak && mkdir /ak/.ssh
+COPY auth /ak/.ssh/authorized_keys
+RUN chown -R andrkrey /ak/.ssh
 
 RUN mkdir -p /app
 COPY s.sh /app/
