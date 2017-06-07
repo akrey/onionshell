@@ -2,7 +2,8 @@
 
 mkdir -p /data/ssh
 for i in rsa dsa ecdsa ed25519; do
-  test -r /data/ssh/$i || ssh-keygen -f /data/ssh/$i -t $i -N ''
+  fn=/data/ssh/ssh_host_${i}_key
+  test -r "$fn" || ssh-keygen -f "$fn" -t $i -N ''
 done
 
 mkdir -p /var/run/sshd
