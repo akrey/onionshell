@@ -19,6 +19,8 @@ services:
     image: akrey/onion
     volumes:
       - data:/data
+    labels:
+      io.rancher.container.pull_image: always
 
   ssh:
     #build:
@@ -27,6 +29,8 @@ services:
     image: akrey/shell
     volumes:
       - data:/data
+    labels:
+      io.rancher.container.pull_image: always
 
 volumes:
   data:
