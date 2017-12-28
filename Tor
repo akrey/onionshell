@@ -9,7 +9,7 @@ FROM alpine
 MAINTAINER Me <andreas.krey@aquilus.com>
 
 RUN mkdir -p /app
-COPY --from=0 /tmp/aenv /app/aenv
+COPY --from=0 /tmpdir/aenv /app/aenv
 COPY t.sh torrc /app/
 RUN chmod 755 /app/t.sh
 
