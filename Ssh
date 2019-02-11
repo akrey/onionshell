@@ -19,4 +19,8 @@ RUN chmod 755 /app/s.sh
 
 EXPOSE 22
 
+RUN /bin/printenv >/app/env.txt
+RUN echo SOURCE_COMMIT >/app/src.txt
+RUN echo "$SOURCE_COMMIT" >/app/cmt.txt
+
 CMD ["/app/s.sh"]
